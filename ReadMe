@@ -1,0 +1,40 @@
+# Contact API Endpoints
+
+- GET /api/contacts  
+  Use: Retrieve all contacts.  
+  Response: 200 OK — JSON array of contacts.
+
+- POST /api/contacts  
+  Use: Create a new contact.  
+  Request body (JSON): { "name": "string", "email": "string", "phone": "string" }  
+  Response: 201 Created — JSON with created contact.
+
+- GET /api/contacts/:id  
+  Use: Retrieve a contact by ID.  
+  Response: 200 OK — JSON contact object; 404 Not Found if missing.
+
+- PUT /api/contacts/:id  
+  Use: Update a contact by ID.  
+  Request body (JSON): any fields to update (e.g., { "name": "new" })  
+  Response: 200 OK — JSON updated contact; 404 Not Found if missing.
+
+- DELETE /api/contacts/:id  
+  Use: Delete a contact by ID.  
+  Response: 200 OK — deletion confirmation; 404 Not Found if missing.
+
+# User API Endpoints
+
+- POST /api/users/register  
+  Use: Register a new user.  
+  Request body (JSON): { "name": "string", "email": "string", "password": "string" }  
+  Response: 201 Created — JSON with created user (often returns a token).
+
+- POST /api/users/login  
+  Use: Authenticate a user and obtain a token.  
+  Request body (JSON): { "email": "string", "password": "string" }  
+  Response: 200 OK — JSON with user info and auth token.
+
+- GET /api/users/current  
+  Use: Get current authenticated user's info.  
+  Auth: Requires Authorization header (Bearer token).  
+  Response: 200 OK — JSON with current user object.
