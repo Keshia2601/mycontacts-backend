@@ -1,4 +1,24 @@
-# Contact API Endpoints
+# MyContacts — Backend
+
+A small Express + MongoDB backend for per-user contact management.
+Provides JWT-based authentication, bcrypt-hashed passwords, and REST endpoints to create, read, update and delete contacts belonging to the authenticated user.
+
+#Features:
+- User registration and login (JWT)
+- CRUD for contacts scoped to the authenticated user
+- Passwords are hashed with bcrypt before storing.
+- JWTs issued on login; middleware `validateTokenHandler` verifies token and sets `req.user`.
+- Contacts reference users by `user_id` and are validated to belong to the authenticated user before update/delete.
+- Ensured that `timestamps: true` is set in schemas if createdAt/updatedAt are needed.
+
+# Environment variables
+Create a `.env` file in the project root with:
+
+- CONNECTION_STRING
+- ACCESS_TOKEN_SECRET
+- PORT
+
+# Contact API Endpoints - Protected Routes - Require JWT bearer token in Auth header:
 
 - GET /api/contacts  
   Use: Retrieve all contacts.  
