@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 //@desc Register a user
-//@route Get /api/users/register
+//@route Post /api/users/register
 //@access public
 
 const registerUser = asyncHandler(async (req, res) => {
@@ -35,7 +35,7 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 //@desc Login a user
-//@route Get /api/users/login
+//@route Post /api/users/login
 //@access public
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -55,7 +55,7 @@ const loginUser = asyncHandler(async (req, res) => {
         },
       },
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: "15m" }
+      { expiresIn: "60m" }
     );
     res.status(200).json({ accessToken });
   } else {
