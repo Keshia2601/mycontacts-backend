@@ -60,7 +60,7 @@ const loginUser = asyncHandler(async (req, res) => {
     res.status(200).json({ accessToken });
   } else {
     res.status(401);
-    throw new Error ("Email or password is not valid")
+    throw new Error ("Email or password is incorrect")
   }
 });
 
